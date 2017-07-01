@@ -1,6 +1,6 @@
 # 获取全体老师
 
-## POST [/teacher/student]
+## GET [/teacher]
 + 说明
 
   老师每页只显示15个
