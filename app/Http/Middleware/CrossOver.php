@@ -17,8 +17,8 @@ class CrossOver
     {
         $header = [
             'Access-Control-Allow-Origin' =>'*',
-            'Access-Control-Allow-Headers'=> 'Origin, _token, Content-Type, Cookie, Accept, multipart/form-data, application/json',
-            'Access-Control-Allow-Methods'=>'GET, POST, PATCH, PUT, OPTIONS',
+            'Access-Control-Allow-Headers'=> 'Origin, token, Content-Type, Cookie, Accept, multipart/form-data, application/json',
+            'Access-Control-Allow-Methods'=>'GET, POST, DELETE, PATCH, PUT, OPTIONS',
             'Access-Control-Allow-Credentials', 'true'
         ];
 

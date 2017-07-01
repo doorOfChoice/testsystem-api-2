@@ -1,4 +1,4 @@
-#  老师修改未修改的题目
+#  老师批改未批改的题目
 
 ## PUT [/paper/{paper_id}/student/{student_id}]
 + 说明

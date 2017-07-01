@@ -21,7 +21,7 @@ class PapersController extends Controller {
     public function add(Request $req){
         $this->validate($req, [
             'title' => 'required',
-            'subject_id' => 'required'
+            'subject_id' => 'required|numeric'
         ]);
 
         $user = ['teacher_id' => $req->username];
@@ -62,7 +62,7 @@ class PapersController extends Controller {
 
         $this->validate($req, [
             'title'        => 'required',
-            'has_password' => 'required',
+            'has_password' => 'required|boolean',
         ]);
 
         $paper->title        = $req->get('title');
@@ -155,7 +155,7 @@ class PapersController extends Controller {
     public function verify_paper(Request $req){
         $this->validate($req, [
           'paper_id' => 'required',
-          'answers.*.id' => 'required',
+          'answers.*.id' => 'required|numeric',
           'answers.*.replys.*' => 'required'
         ]);
 
@@ -199,8 +199,8 @@ class PapersController extends Controller {
     //老师修改剩下简答题
     public function correct_reply(Request $req, $pid, $sid){
         $this->validate($req, [
-            'corrects.*.id' => 'required',
-            'corrects.*.grade' => 'required'
+            'corrects.*.id' => 'required|numeric',
+            'corrects.*.grade' => 'required|numeric'
         ]);
 
         $paper = Paper::findOrFail($pid);

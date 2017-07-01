@@ -23,8 +23,8 @@ class QuestionsController extends Controller {
     //添加题目
     public function add(Request $req){
         $this->validate($req, [
-            'subject_id' => 'required',
-            'type_id'    => 'required',
+            'subject_id' => 'required|numeric',
+            'type_id'    => 'required|numeric',
             'content'    => 'required',
             'tags.*'     => 'required',
             'corrects.*' => 'required',
@@ -46,9 +46,9 @@ class QuestionsController extends Controller {
     public function add_to_paper(Request $req){
 
         $this->validate($req, [
-            'paper_id' => 'required',
+            'paper_id' => 'required|numeric',
             'questions' => 'required',
-            'questions.*.id' => 'required',
+            'questions.*.id' => 'required|numeric',
             'questions.*.grade' => 'required'
         ]);
 
@@ -127,9 +127,10 @@ class QuestionsController extends Controller {
 
     //根据id获取题目
     public function get($id){
-        $data = Question::findOrFail($id);
-
-        return ResponseTool::back(QuestionTool::deal($data, true));
+        $question = Question::findOrFail($id);
+        //增加浏览量
+        $question->increment('hot');
+        return ResponseTool::back(QuestionTool::deal($question, true));
     }
 
     //获取所有题目
@@ -150,7 +151,8 @@ class QuestionsController extends Controller {
             return ResponseTool::back([], ResponseTool::NOT_FOUND, '标签不存在');
 
         $datas = QuestionTool::dealAll($tag->questions()
-                                           ->orderBy('id')
+                                           ->orderBy('hot', 'desc')
+                                           ->orderBy('id', 'desc')
                                            ->paginate(self::PAGE));
         return ResponseTool::back($datas);
     }
@@ -160,7 +162,8 @@ class QuestionsController extends Controller {
         $subject = Subject::findOrFail($id);
 
         $datas = QuestionTool::dealAll($subject->questions()
-                                               ->orderBy('id')
+                                               ->orderBy('hot', 'desc')
+                                               ->orderBy('id', 'desc')
                                                ->paginate(self::PAGE));
 
         return ResponseTool::back($datas);
@@ -171,7 +174,8 @@ class QuestionsController extends Controller {
         $type = Type::findOrFail($id);
 
         $datas = QuestionTool::dealAll($type->questions()
-                                            ->orderBy('id')
+                                            ->orderBy('hot', 'desc')
+                                            ->orderBy('id', 'desc')
                                             ->paginate(self::PAGE));
 
         return ResponseTool::back($datas);
