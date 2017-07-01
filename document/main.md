@@ -6,6 +6,15 @@
 
 + 分页的方法是在url后面加 ?page=页码
 + 注意文档中有些地方需要把url的参数编码
++ 参数分为三类, url(传在url上的), payload(传在json里面的), header(传在头部里面的)
++ 响应里面返回的主体固定格式是下面这种，写在里面的实例全是成功的响应结果.
+
+```
+{
+    "datas" : 数据,
+    "status" : 消息(通常看响应码就行了)
+}
+```
 
 
 ## 基本网址
@@ -52,7 +61,7 @@ Base : https://api.seeonce.cn/paper/public/v2
   + [注册](teacher/register.md)
   + [登录](teacher/login.md)
   + [获取所有老师](teacher/get_all.md)
-  + [取消关注老师](teahcer/unfollowed_student.md)
+  + [取消关注学生](teahcer/unfollow_student.md)
   + [获取关注自己的学生](teacher/get_students.md)
 
 + ### subject

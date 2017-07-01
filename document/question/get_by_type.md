@@ -14,6 +14,7 @@
 
 + 响应
   + Body
+  ```
         {
           datas : {
             questions:[
@@ -44,5 +45,6 @@
           },
           status: ""
         }
+  ```
   + HTTP Code
     + 获取成功 200

@@ -17,6 +17,7 @@
 
 + 响应
   + Body
+  ```
         {
           datas : {
             "questions": [
@@ -50,6 +51,7 @@
           },
           status: ""
         }
+    ```
   + HTTP Code
     + 获取成功 204
     + 未登录/无权限 401
