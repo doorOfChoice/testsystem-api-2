@@ -55,7 +55,7 @@ class QuestionsController extends Controller {
         $paper = Paper::findOrFail($req->get('paper_id'));
 
         if($paper->teacher_id !== $req->username){
-            return ResponseTool::back([], ResponseTool::UNAUTHORIZED, '这不是属于你的属性');
+            return ResponseTool::back([], ResponseTool::FORBIDDEN, '这不是属于你的属性');
         }
 
         foreach($req->input('questions') as $qs){
@@ -74,7 +74,7 @@ class QuestionsController extends Controller {
         $paper = Paper::findOrFail($pid);
 
         if($paper->teacher_id !== $req->username){
-            return ResponseTool::back([], ResponseTool::UNAUTHORIZED, '这不是属于你的属性');
+            return ResponseTool::back([], ResponseTool::FORBIDDEN, '这不是属于你的属性');
         }
 
         $question = Question::findOrFail($qid);
@@ -89,7 +89,7 @@ class QuestionsController extends Controller {
         $question = Question::findOrFail($id);
 
         if($question->teacher_id !== $req->username){
-            return ResponseTool::back([], ResponseTool::UNAUTHORIZED, '这不是属于你的属性');
+            return ResponseTool::back([], ResponseTool::FORBIDDEN, '这不是属于你的属性');
         }
 
         $question->delete();
@@ -102,7 +102,7 @@ class QuestionsController extends Controller {
         $question = Question::findOrFail($id);
 
         if($question->teacher_id !== $req->username){
-            return ResponseTool::back([], ResponseTool::UNAUTHORIZED, '这不是属于你的属性');
+            return ResponseTool::back([], ResponseTool::FORBIDDEN, '这不是属于你的属性');
         }
 
         $this->validate($req, [

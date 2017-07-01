@@ -104,6 +104,8 @@ $app->group(['middleware' => 'crossover'], function() use ($app){
           });
           //老师注册
           $app->post('/', 'TeachersController@register');
+          //获取全部老师
+          $app->get('/', 'TeachersController@all');
           //老师登录
           $app->post('session', 'TeachersController@login');
       });

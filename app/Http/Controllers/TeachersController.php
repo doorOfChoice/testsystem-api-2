@@ -65,4 +65,8 @@ class TeachersController extends Controller{
 
         return ResponseTool::back($result);
     }
+
+    public function all(Request $req){
+        return ResponseTool::back(Teacher::paginate(15));
+    }
 }
