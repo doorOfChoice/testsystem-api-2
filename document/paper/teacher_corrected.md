@@ -1,4 +1,4 @@
-#  获取老师修改的试卷
+#  获取老师已经批改的试卷
 
 ## GET [/paper/corrected/teacher]
 + 说明
@@ -15,6 +15,7 @@
 
 + 响应
   + Body
+  ```
         {
           datas : [
             "last_page": 最后一页下标,
@@ -34,6 +35,7 @@
           ],
           status: ""
         }
+    ```
   + HTTP Code
     + 批改成功 200
     + 未登录/无权限 401
