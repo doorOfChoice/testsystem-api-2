@@ -14,9 +14,9 @@
   + Body
   ```
         {
-          datas : [
+          datas : {
             "token" : 登录令牌，权限操作全部放在头里面
-          ],
+          },
           status: ""
         }
   ```

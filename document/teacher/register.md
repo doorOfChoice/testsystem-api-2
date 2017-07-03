@@ -14,11 +14,9 @@
   + Body
   ```
         {
-          datas : [
-            {
+          datas : {
               id : 0
-            }
-          ],
+          },
           status: ""
         }
   ```

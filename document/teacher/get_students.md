@@ -16,7 +16,7 @@
   + Body
   ```
         {
-          datas : [
+          datas : {
           "last_page": 最后一页下标,
           "next_page_url": 下一页的url,
           "path": 请求地址,
@@ -29,7 +29,7 @@
               "name" : 学生昵称
             },
             ...
-          ],
+          },
           status: ""
         }
   ```
